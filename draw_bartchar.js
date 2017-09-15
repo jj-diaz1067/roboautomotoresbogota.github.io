@@ -227,7 +227,9 @@ function update(myData, seccion) {
 //adiciono el label de los valores a todos los eleentos 
  var psEnter =  ps.enter()
     .append("text")
+		.transition().duration(2000)
         .attr("x",function (d) { return widthScale(d.hora);})
+		.transition().duration(2000)
         .attr("y",function (d) { return height-margin.top-margin.bottom-d.cantidad_robada;})
         .text(function (d) { return d.cantidad_robada; })
 }
