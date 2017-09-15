@@ -1,3 +1,4 @@
+//datos 2014
 var myData =[
     { hora: 0, cantidad_robada: 38},
 { hora: 1, cantidad_robada: 40},
@@ -126,9 +127,11 @@ var width = 700,
    	.attr("class", "y axis"),
    widthScale = d3.scaleLinear()
     .range([0, width - margin.left -margin.right]),
-   colorScale = d3.scaleOrdinal(d3.schemeCategory10),
+   colorScale = d3.scaleOrdinal(d3.schemeCategory20),
    heightScale = d3.scaleLinear()
-   	.range([height -margin.top - margin.bottom,0]);	
+   	.range([height -margin.top - margin.bottom,0])
+
+	;	
 	
 var width = 700,
 	height = 350,
@@ -176,8 +179,8 @@ var width = 700,
   margin = {left: 30, right: 20, top: 5, bottom: 20},
 	chart4 = d3.select("#chart4")
 		.append("svg")
-    .attr("width", width )
-    .attr("height", height)
+		.attr("width", width )
+		.attr("height", height)
 	.attr("transform", "translate("+ width + "," + - 2*height + ")")
     .append("g")
     	.attr("transform", "translate("+ margin.left + "," + margin.top + ")"),
@@ -192,7 +195,7 @@ var width = 700,
    heightScale = d3.scaleLinear()
    	.range([height -margin.top - margin.bottom,0]);	
 
-function update(myData, seccion) {
+function update(myData, seccion, periodo) {
 	// Update the scale to the new maximum
 	widthScale.domain([0, d3.max(myData, function (d) { return d.hora+1; })])
     heightScale.domain([0, d3.max(myData, function (d) { return heightScale(d.cantidad_robada); })]);
@@ -215,6 +218,7 @@ function update(myData, seccion) {
 	// Actions for deleted items
   ps.exit().remove(); 
   
+   
   xAxis.call(d3.axisBottom(widthScale));
   yAxis.call(d3.axisLeft(heightScale));
   xAxis2.call(d3.axisBottom(widthScale));
@@ -232,11 +236,22 @@ function update(myData, seccion) {
 		.transition().duration(2000)
         .attr("y",function (d) { return height-margin.top-margin.bottom-d.cantidad_robada;})
         .text(function (d) { return d.cantidad_robada; })
+		
+//agrego el año a cada recuadro		
+  var psEnter =  ps.enter()
+    .append("text")
+        .attr("x", 10)
+        .attr("y", 10)
+        .text(periodo)
+		
+
+
+		
 }
 
-update(myData,chart);
-update(myData2,chart2);
-update(myData3,chart3);
-update(myData4,chart4);
+update(myData,chart,2014);
+update(myData2,chart2,2015);
+update(myData3,chart3,2016);
+update(myData4,chart4,2017);
 
  
