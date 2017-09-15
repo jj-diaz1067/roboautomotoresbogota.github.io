@@ -242,11 +242,7 @@ function update(myData, seccion, periodo) {
     .append("text")
         .attr("x", 10)
         .attr("y", 10)
-        .text(periodo)
-		
-
-
-		
+        .text(periodo)		
 }
 
 update(myData,chart,2014);
