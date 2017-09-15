@@ -1,1 +1,3 @@
-theme: jekyll-theme-architect
+markdown: redcarpet
+baseurl: /roboautomotoresbogota.github.io
+exclude: ['README.md']
