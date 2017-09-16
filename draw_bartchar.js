@@ -127,7 +127,6 @@ var width = 700,
    	.attr("class", "y axis"),
    widthScale = d3.scaleLinear()
     .range([0, width - margin.left -margin.right]),
-   colorScale = d3.scaleOrdinal(d3.schemeCategory20),
    heightScale = d3.scaleLinear()
    	.range([height -margin.top - margin.bottom,0])
 
@@ -149,7 +148,6 @@ var width = 700,
    	.attr("class", "y axis"),
    widthScale = d3.scaleLinear()
     .range([0, width - margin.left -margin.right]),
-   colorScale = d3.scaleOrdinal(d3.schemeCategory20),
    heightScale = d3.scaleLinear()
    	.range([height -margin.top - margin.bottom,0]);	
 
@@ -170,7 +168,6 @@ var width = 700,
    	.attr("class", "y axis"),
    widthScale = d3.scaleLinear()
     .range([0, width - margin.left -margin.right]),
-   colorScale = d3.scaleOrdinal(d3.schemeCategory20),
    heightScale = d3.scaleLinear()
    	.range([height -margin.top - margin.bottom,0]);	
 	
@@ -191,7 +188,6 @@ var width = 700,
    	.attr("class", "y axis"),
    widthScale = d3.scaleLinear()
     .range([0, width - margin.left -margin.right]),
-   colorScale = d3.scaleOrdinal(d3.schemeCategory20),
    heightScale = d3.scaleLinear()
    	.range([height -margin.top - margin.bottom,0]);	
 
@@ -214,7 +210,12 @@ function update(myData, seccion, periodo) {
     .attr("x", function (d)  { return widthScale(d.hora); })
 	.attr("height", function (d) { return d.cantidad_robada; })
 		.transition().duration(2000)  
-    .style("fill", function (d, i) { return colorScale(d.hora); })
+    .style("fill", 
+		  function (d, i) { 
+			if (d.cantidad_robada>150){
+				return "red" 
+		    }else{ return "LightSkyBlue"}
+			})
 	// Actions for deleted items
   ps.exit().remove(); 
   
@@ -240,9 +241,11 @@ function update(myData, seccion, periodo) {
 //agrego el año a cada recuadro		
   var psEnter =  ps.enter()
     .append("text")
-        .attr("x", 10)
-        .attr("y", 10)
+        .attr("x", 20)
+        .attr("y", 20)
+		.attr("font-size",25)
         .text(periodo)		
+
 }
 
 update(myData,chart,2014);
@@ -250,4 +253,5 @@ update(myData2,chart2,2015);
 update(myData3,chart3,2016);
 update(myData4,chart4,2017);
 
- 
+
+				 
