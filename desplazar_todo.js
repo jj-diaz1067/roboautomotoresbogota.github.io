@@ -1,8 +1,6 @@
 function desplazar(){
   var ventana_completa = d3.selectAll("g");
-  ventana_completa.transition()
-				  .duration(2000)
-				  .attr("transform", "translate("+ width + "," + - 2*height + ")")
+  ventana_completa.transition().duration(2000).attr("transform", "translate("+ width + "," + - 2*height + ")")
 				  
 				  
 	var myData2 =[
