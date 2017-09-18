@@ -4,26 +4,27 @@ function desplazar(){
 				  
 				  
 	var myData2 =[
-		{ barrio: "CASTILLA LA NUEVA E-8", cantidad_robada: 24},
-{ barrio: "GALAN E-16", cantidad_robada: 23},
-{ barrio: "TINTAL    E-8", cantidad_robada: 15},
-{ barrio: "SANTA ISABEL E-14", cantidad_robada: 12},
-{ barrio: "PATIO BONITO I E-8", cantidad_robada: 12},
-{ barrio: "SANTA MATILDE I SECTOR E-16", cantidad_robada: 12},
-{ barrio: "CASTILLA REAL     E-8", cantidad_robada: 11},
-{ barrio: "GRAN GRANADA E-10", cantidad_robada: 10},
-{ barrio: "VILLA ALSACIA E-8", cantidad_robada: 9},
-{ barrio: "MODELIA E-9", cantidad_robada: 8},
-{ barrio: "ALCAL� E-16", cantidad_robada: 7},
-{ barrio: "LAS MARGARITAS E-8", cantidad_robada: 7},
-{ barrio: "VILLAS DE GRANADA E-10", cantidad_robada: 7},
-{ barrio: "SAN VICENTE FERRER E-6", cantidad_robada: 6},
-{ barrio: "CANDELARIA LA NUEVA I SECTOR E-19", cantidad_robada: 6},
-{ barrio: "SANTA ISABEL OCCIDENTAL E-16", cantidad_robada: 6},
-{ barrio: "CIUDAD JARDIN SUR E-15", cantidad_robada: 6},
-{ barrio: "CARVAJAL E-8", cantidad_robada: 6},
-{ barrio: "CIUDADELA COLSUBSIDIO E-10", cantidad_robada: 5},
-{ barrio: "BAVARIA E-8", cantidad_robada: 5}
+		{ barrio: "CASTILLA LA NUEVA E-8", cantidad_robada: 128},
+{ barrio: "TINTAL    E-8", cantidad_robada: 74},
+{ barrio: "VILLA ALSACIA E-8", cantidad_robada: 57},
+{ barrio: "CIUDADELA COLSUBSIDIO E-10", cantidad_robada: 57},
+{ barrio: "GALAN E-16", cantidad_robada: 55},
+{ barrio: "CARVAJAL E-8", cantidad_robada: 52},
+{ barrio: "MODELIA E-9", cantidad_robada: 46},
+{ barrio: "ALCALÁ E-16", cantidad_robada: 45},
+{ barrio: "PATIO BONITO I E-8", cantidad_robada: 45},
+{ barrio: "TIMIZA CÉLULA A LOTE RA-2 E-8", cantidad_robada: 41},
+{ barrio: "CASTILLA REAL     E-8", cantidad_robada: 37},
+{ barrio: "TECHO  E-8", cantidad_robada: 32},
+{ barrio: "MUZU E-16", cantidad_robada: 32},
+{ barrio: "SANTA MATILDE I SECTOR E-16", cantidad_robada: 24},
+{ barrio: "SANTA ISABEL E-14", cantidad_robada: 23},
+{ barrio: "LAS MARGARITAS E-8", cantidad_robada: 21},
+{ barrio: "GRAN GRANADA E-10", cantidad_robada: 19},
+{ barrio: "CIUDAD KENNEDY CENTRAL E-8", cantidad_robada: 19},
+{ barrio: "BOCHICA E-10", cantidad_robada: 19},
+{ barrio: "VILLA LUZ E-10", cantidad_robada: 18},
+
 
 ]
 
@@ -36,9 +37,9 @@ function update2 (myData2) {
 var antes = d3.selectAll("body").select("svg");
 antes.remove();
 
-var width = 600,
+var width = 700,
 	height = 600,
-  margin = {left: 200, right: 20, top: 20, bottom: 20},
+  margin = {left: 200, right: 30, top: 20, bottom: 20},
 	chart = d3.select("#chart")
 			  .append("svg")
     .attr("width", width )
@@ -88,4 +89,13 @@ var width = 600,
     
   xAxis.call(d3.axisBottom(widthScale));
   yAxis.call(d3.axisLeft(heightScale));
+
+  //adiciono el label de los valores a todos los eleentos 
+ var psEnter =  ps.enter()
+    .append("text")
+    .transition().duration(2000)
+        .attr("x",function (d) { return widthScale(d.cantidad_robada);})
+    .transition().duration(2000)
+        .attr("y",function (d) { return heightScale(d.barrio)+margin.top;})
+        .text(function (d) { return d.cantidad_robada; })
 }   
