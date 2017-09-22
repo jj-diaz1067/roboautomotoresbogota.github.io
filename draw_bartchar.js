@@ -26,7 +26,7 @@ var myData =[
 { hora: 23, cantidad_robada: 100}
 
 ]
-
+//datos 2015
 var myData2 =[
     { hora: 0, cantidad_robada: 37},
 { hora: 1, cantidad_robada: 28},
@@ -53,7 +53,7 @@ var myData2 =[
 { hora: 22, cantidad_robada: 157},
 { hora: 23, cantidad_robada: 96}
 ]
-
+//datos 2016
 var myData3 =[
    { hora: 0, cantidad_robada: 46},
 { hora: 1, cantidad_robada: 41},
@@ -82,7 +82,7 @@ var myData3 =[
 
 
 ]
-
+//datos 2017
 var myData4 =[
    { hora: 0, cantidad_robada: 45},
 { hora: 1, cantidad_robada: 27},
@@ -111,6 +111,7 @@ var myData4 =[
 
 ]
 
+// crear una funcion que permita hacer esto, asi evitar hacerlo 4 veces
 var width = 700,
 	height = 350,
   margin = {left: 30, right: 20, top: 5, bottom: 20},
@@ -238,7 +239,7 @@ function update(myData, seccion, periodo) {
         .attr("y",function (d) { return height-margin.top-margin.bottom-d.cantidad_robada;})
         .text(function (d) { return d.cantidad_robada; })
 		
-//agrego el año a cada recuadro		
+//agrego el aÃ±o a cada recuadro		
   var psEnter =  ps.enter()
     .append("text")
         .attr("x", 20)
